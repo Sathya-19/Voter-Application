@@ -1,0 +1,29 @@
+function checkFact() {
+    const claim = document.getElementById('claimInput').value;
+    const loading = document.getElementById('loading');
+    const resultDiv = document.getElementById('result');
+
+    if (!claim) {
+        alert('Please enter a claim to check.');
+        return;
+    }
+
+    loading.style.display = 'block';
+    resultDiv.style.display = 'none';
+
+    fetch('http://127.0.0.1:5000/check-fact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ claim })
+    })
+    .then(response => response.json())
+    .then(data => {
+        loading.style.display = 'none';
+        resultDiv.style.display = 'block';
+        resultDiv.textContent = data.result;
+    })
+    .catch(error => {
+        loading.style.display = 'none';
+        alert('Error: Something went wrong.');
+    });
+}

@@ -1,0 +1,29 @@
+#. Deployment
+To deploy the application, use Flask on a cloud platform.
+
+Steps to Deploy:
+1. Choose a Hosting Platform:
+Use Heroku or Render for simplicity.
+
+2. Prepare Requirements File:
+Create a requirements.txt in your project directory:
+
+Flask
+requests
+
+3. Procfile for Heroku:
+Create a file named Procfile in the project root:
+
+web: python app.py
+
+4. Deploy Commands for Heroku:
+
+heroku login
+git init
+heroku create
+git add .
+git commit -m "Initial commit"
+git push heroku master
+
+5. Access Your App:
+Open the provided Heroku link to test your app live.
